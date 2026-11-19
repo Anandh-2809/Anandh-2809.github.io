@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Anandha Raj S - Computer Science and Engineering Graduate, Software Developer, Java Developer, and Web Developer.">
+  <meta name="keywords" content="Anandha Raj S, Portfolio, Software Developer, Java Developer, Web Developer, Panimalar Engineering College, Unreal Engine">
+  <meta name="author" content="Anandha Raj S">
+  <meta name="theme-color" content="#050508">
+
+  <title>Anandha Raj S | Software Developer Portfolio</title>
+
+  <!-- Open Graph / Social Sharing Meta Tags -->
+  <meta property="og:title" content="Anandha Raj S | Software Developer Portfolio">
+  <meta property="og:description" content="Computer Science and Engineering graduate | Java Developer, Web Developer, and 3D Game Developer from Chennai, India.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://anandh-2809.github.io/portfolio/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Anandha Raj S | Software Developer">
+  <meta name="twitter:description" content="CSE Graduate | Java, Web, and Game Developer.">
+
+  <!-- Google Fonts: Orbitron & Rajdhani -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Devicon Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Ambient Cinematic Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Mouse Light Glow Overlay -->
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- Brief Futuristic Preloader -->
+  <div id="preloader" class="preloader">
+    <div class="preloader-content">
+      <div class="cyber-spinner">
+        <div class="spinner-ring outer"></div>
+        <div class="spinner-ring inner"></div>
+        <div class="cyber-core"><i class="fa-solid fa-terminal"></i></div>
+      </div>
+      <div class="preloader-text">
+        <span class="glitch-text" data-text="INITIALIZING SYSTEM">INITIALIZING SYSTEM</span>
+        <div class="preloader-bar"><div class="bar-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="header" id="header">
+    <nav class="navbar" id="navbar">
+      <a href="#home" class="nav-logo" aria-label="Anandha Raj Homepage">
+        <span class="logo-bracket">[</span>
+        <span class="logo-text">ANANDHA<span class="text-crimson"> RAJ</span></span>
+        <span class="logo-bracket">]</span>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <ul class="nav-menu" id="nav-menu">
+        <li class="nav-item"><a href="#home" class="nav-link active">HOME</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">ABOUT</a></li>
+        <li class="nav-item"><a href="#skills" class="nav-link">SKILLS</a></li>
+        <li class="nav-item"><a href="#projects" class="nav-link">PROJECTS</a></li>
+        <li class="nav-item"><a href="#achievements" class="nav-link">ACHIEVEMENTS</a></li>
+        <li class="nav-item"><a href="#certifications" class="nav-link">CERTIFICATIONS</a></li>
+        <li class="nav-item"><a href="#education" class="nav-link">EDUCATION</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">CONTACT</a></li>
+      </ul>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="home">
+      <div class="hero-container">
+        <!-- Hero Left / Content -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="status-dot"></span>
+            <span class="badge-text">STATUS: AVAILABLE FOR OPPORTUNITIES</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span class="greeting">HELLO, WORLD. I AM</span>
+            <span class="name-display">ANANDHA <span class="neon-red-text">RAJ S</span></span>
+          </h1>
+
+          <div class="hero-typing-wrapper">
+            <span class="terminal-prompt">&gt;</span>
+            <span class="typed-text" id="typed-text"></span>
+            <span class="cursor-blink">|</span>
+          </div>
+
+          <p class="hero-intro">
+            Computer Science and Engineering graduate passionate about software development, problem-solving, and continuous learning.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary cyber-btn">
+              <span class="btn-text">VIEW MY PROJECTS</span>
+              <span class="btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
+            </a>
+            <a href="resume.pdf" class="btn btn-secondary cyber-btn" id="resume-btn" download="Anandha_Raj_Resume.pdf">
+              <span class="btn-text">DOWNLOAD RESUME</span>
+              <span class="btn-icon"><i class="fa-solid fa-download"></i></span>
+            </a>
+          </div>
+
+          <!-- Hero Social Icons -->
+          <div class="hero-socials">
+            <span class="social-label">CONNECT:</span>
+            <a href="https://www.linkedin.com/in/anandh2803/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile" title="LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <a href="https://leetcode.com/u/Anandh_2809/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LeetCode Profile" title="LeetCode">
+              <i class="fa-solid fa-code"></i>
+            </a>
+            <a href="https://github.com/Anandh-2809" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub Profile" title="GitHub">
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://wa.me/918531061909" target="_blank" rel="noopener noreferrer" class="social-link social-link--whatsapp" aria-label="WhatsApp Chat" title="WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="mailto:anandharaj28032005@gmail.com" class="social-link" aria-label="Send Email" title="Direct Email">
+              <i class="fa-solid fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Right / Cinematic Avatar Graphic -->
+        <div class="hero-visual">
+          <div class="avatar-cyber-container">
+            <!-- Animated Cybernetic Rotating Rings -->
+            <div class="cyber-ring ring-outer"></div>
+            <div class="cyber-ring ring-middle"></div>
+            <div class="cyber-ring ring-dashed"></div>
+            <div class="ambient-fog"></div>
+
+            <!-- Profile Photo Frame -->
+            <!-- Replace profile.jpg with your actual photo file in this folder -->
+            <div class="avatar-frame avatar-photo-frame">
+              <img
+                src="profile.jpg"
+                alt="Anandha Raj S - Software Developer"
+                class="avatar-photo"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+              />
+              <!-- Fallback icon if profile.jpg is missing -->
+              <div class="avatar-fallback" style="display:none;">
+                <i class="fa-solid fa-user"></i>
+              </div>
+            </div>
+
+            <!-- Floating Tech Badges -->
+            <div class="tech-badge badge-top-right">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>CSE GRAD</span>
+            </div>
+            <div class="tech-badge badge-bottom-left">
+              <i class="fa-solid fa-code-branch"></i>
+              <span>DEV v2.6</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Down Indicator -->
+      <a href="#about" class="scroll-down-indicator" aria-label="Scroll down to About section">
+        <span class="scroll-mouse"><span class="mouse-wheel"></span></span>
+        <span class="scroll-text">EXPLORE SYSTEM</span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section class="section about-section" id="about">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-subtitle">// GET TO KNOW ME</span>
+          <h2 class="section-title">ABOUT <span class="neon-red-text">ME</span></h2>
+          <div class="section-divider"><span class="divider-node"></span></div>
+        </div>
+
+        <div class="about-grid">
+          <!-- Main Narrative Bio Card -->
+          <div class="glass-card about-bio-card reveal">
+            <div class="card-corner corner-tl"></div>
+            <div class="card-corner corner-br"></div>
+            <div class="card-header-cyber">
+              <i class="fa-solid fa-id-badge text-crimson"></i>
+              <span class="cyber-tag">IDENTITY_PROFILE</span>
+            </div>
+            <h3 class="about-name">Anandha Raj S</h3>
+            <p class="about-subtitle">Computer Science & Engineering Specialist</p>
+
+            <div class="bio-text">
+              <p>
+                I am a Computer Science and Engineering graduate with an interest in software development. I enjoy solving programming problems, learning new technologies, and developing software applications.
+              </p>
+              <p>
+                I am passionate about continuous learning and improving my technical skills.
+              </p>
+            </div>
+
+            <!-- Quick Meta Points -->
+            <div class="about-meta-list">
+              <div class="meta-item">
+                <span class="meta-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                <div class="meta-info">
+                  <span class="meta-label">Degree</span>
+                  <span class="meta-val">B.E. Computer Science & Eng.</span>
+                </div>
+              </div>
+              <div class="meta-item">
+                <span class="meta-icon"><i class="fa-solid fa-building-columns"></i></span>
+                <div class="meta-info">
+                  <span class="meta-label">Institution</span>
+                  <span class="meta-val">Panimalar Engineering College</span>
+                </div>
+              </div>
+              <div class="meta-item">
+                <span class="meta-icon"><i class="fa-solid fa-chart-line"></i></span>
+                <div class="meta-info">
+                  <span class="meta-label">Current CGPA</span>
+                  <span class="meta-val highlight-val">8.23 / 10.0</span>
+                </div>
+              </div>
+              <div class="meta-item">
+                <span class="meta-icon"><i class="fa-solid fa-calendar-days"></i></span>
+                <div class="meta-info">
+                  <span class="meta-label">Academic Span</span>
+                  <span class="meta-val">2022 – 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary Column: Personal Details, Hobbies & Languages -->
+          <div class="about-details-column">
+            <!-- Languages Card -->
+            <div class="glass-card detail-card reveal">
+              <div class="card-header-cyber">
+                <i class="fa-solid fa-language text-crimson"></i>
+                <span class="cyber-tag">COMMUNICATION_CHANNELS</span>
+              </div>
+              <h4 class="detail-title">Languages Known</h4>
+              <div class="language-badges">
+                <div class="lang-badge">
+                  <span class="lang-flag"><i class="fa-solid fa-globe"></i></span>
+                  <span class="lang-name">English</span>
+                  <span class="lang-level">Professional</span>
+                </div>
+                <div class="lang-badge">
+                  <span class="lang-flag"><i class="fa-solid fa-globe"></i></span>
+                  <span class="lang-name">Tamil</span>
+                  <span class="lang-level">Native</span>
+                </div>
+                <div class="lang-badge">
+                  <span class="lang-flag"><i class="fa-solid fa-globe"></i></span>
+                  <span class="lang-name">Hindi</span>
+                  <span class="lang-level">Conversational</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hobbies & Interests Card -->
+            <div class="glass-card detail-card reveal">
+              <div class="card-header-cyber">
+                <i class="fa-solid fa-compass text-crimson"></i>
+                <span class="cyber-tag">RECREATION_&_PASSIONS</span>
+              </div>
+              <h4 class="detail-title">Hobbies & Interests</h4>
+              <div class="hobbies-list">
+                <div class="hobby-item">
+                  <div class="hobby-icon-wrap"><i class="fa-solid fa-om"></i></div>
+                  <div class="hobby-content">
+                    <span class="hobby-title">Spirituality & Meditation</span>
+                    <span class="hobby-desc">Cultivating mindfulness, focus, and mental clarity for balanced problem-solving.</span>
+                  </div>
+                </div>
+                <div class="hobby-item">
+                  <div class="hobby-icon-wrap"><i class="fa-solid fa-book-open"></i></div>
+                  <div class="hobby-content">
+                    <span class="hobby-title">Reading Non-Fiction Books</span>
+                    <span class="hobby-desc">Exploring psychology, productivity, biographies, and continuous personal growth.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="section skills-section" id="skills">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-subtitle">// TECHNICAL ARSENAL</span>
+          <h2 class="section-title">MY <span class="neon-red-text">SKILLS</span></h2>
+          <div class="section-divider"><span class="divider-node"></span></div>
+          <p class="section-lead">Core competencies developed through rigorous academic projects, software engineering challenges, and creative game logic.</p>
+        </div>
+
+        <div class="skills-categories-grid">
+          <!-- Category 1: Programming Languages & Databases -->
+          <div class="glass-card skill-category-card reveal">
+            <div class="category-header">
+              <div class="category-icon"><i class="fa-solid fa-code"></i></div>
+              <div class="category-titles">
+                <span class="category-tag">CORE &amp; SCRIPTING</span>
+                <h3 class="category-name">Programming &amp; Database</h3>
+              </div>
+            </div>
+
+            <div class="skill-items-grid">
+              <div class="skill-pill">
+                <i class="devicon-java-plain colored skill-icon"></i>
+                <span class="skill-name">Java</span>
+              </div>
+              <div class="skill-pill">
+                <i class="devicon-html5-plain colored skill-icon"></i>
+                <span class="skill-name">HTML5</span>
+              </div>
+              <div class="skill-pill">
+                <i class="devicon-css3-plain colored skill-icon"></i>
+                <span class="skill-name">CSS3</span>
+              </div>
+              <div class="skill-pill">
+                <i class="devicon-javascript-plain colored skill-icon"></i>
+                <span class="skill-name">JavaScript</span>
+              </div>
+              <div class="skill-pill">
+                <i class="devicon-mysql-plain colored skill-icon"></i>
+                <span class="skill-name">MySQL</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Software Concepts -->
+          <div class="glass-card skill-category-card reveal">
+            <div class="category-header">
+              <div class="category-icon"><i class="fa-solid fa-brain"></i></div>
+              <div class="category-titles">
+                <span class="category-tag">THEORETICAL FOUNDATIONS</span>
+                <h3 class="category-name">Core Concepts</h3>
+              </div>
+            </div>
+
+            <div class="skill-items-grid">
+              <div class="skill-pill">
+                <i class="fa-solid fa-cubes skill-icon text-crimson"></i>
+                <span class="skill-name">Object-Oriented Programming (OOP)</span>
+              </div>
+              <div class="skill-pill">
+                <i class="fa-solid fa-diagram-project skill-icon text-crimson"></i>
+                <span class="skill-name">Data Structures &amp; Algorithms</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Developer Tools & Game Engines -->
+          <div class="glass-card skill-category-card reveal">
+            <div class="category-header">
+              <div class="category-icon"><i class="fa-solid fa-wrench"></i></div>
+              <div class="category-titles">
+                <span class="category-tag">ENVIRONMENTS &amp; TOOLS</span>
+                <h3 class="category-name">Tools &amp; Engines</h3>
+              </div>
+            </div>
+
+            <div class="skill-items-grid">
+              <div class="skill-pill">
+                <i class="devicon-vscode-plain colored skill-icon"></i>
+                <span class="skill-name">VS Code</span>
+              </div>
+              <div class="skill-pill">
+                <i class="devicon-unrealengine-original skill-icon text-crimson"></i>
+                <span class="skill-name">Unreal Engine</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section projects-section" id="projects">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-subtitle">// SYSTEM DEPLOYMENTS</span>
+          <h2 class="section-title">FEATURED <span class="neon-red-text">PROJECTS</span></h2>
+          <div class="section-divider"><span class="divider-node"></span></div>
+          <p class="section-lead">Explore featured engineering projects spanning immersive 3D simulation and intelligent decision support systems.</p>
+        </div>
+
+        <div class="projects-grid">
+          <!-- PROJECT 1: 3D Game Development -->
+          <article class="glass-card project-card reveal">
+            <div class="project-banner game-banner">
+              <!-- Visual Graphic Background -->
+              <div class="project-overlay"></div>
+              <div class="banner-badge">
+                <i class="fa-solid fa-gamepad"></i>
+                <span>SIMULATION &amp; GAMING</span>
+              </div>
+              <div class="project-graphic">
+                <i class="fa-solid fa-vr-cardboard graphic-icon"></i>
+                <div class="grid-radar"></div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-meta-bar">
+                <span class="proj-id">PROJECT_01</span>
+                <span class="proj-status"><span class="pulse-dot"></span> COMPLETED</span>
+              </div>
+
+              <h3 class="project-title">3D Game Development</h3>
+
+              <div class="tech-tags">
+                <span class="tech-tag"><i class="fa-solid fa-cube"></i> Unreal Engine</span>
+                <span class="tech-tag"><i class="fa-solid fa-code-fork"></i> Visual Scripting</span>
+                <span class="tech-tag"><i class="fa-solid fa-bolt"></i> Physics &amp; Mechanics</span>
+              </div>
+
+              <p class="project-desc">
+                Designed and developed an interactive 3D game using Unreal Engine. Implemented gameplay mechanics, player controls, physics, and interactive environments. Optimized rendering performance and asset management to improve gameplay experience.
+              </p>
+
+              <div class="project-highlights">
+                <div class="highlight-point">
+                  <i class="fa-solid fa-check text-crimson"></i>
+                  <span>Engineered responsive physics-based player mobility and interaction states</span>
+                </div>
+                <div class="highlight-point">
+                  <i class="fa-solid fa-check text-crimson"></i>
+                  <span>Optimized level rendering pipeline for smooth 60+ FPS gameplay</span>
+                </div>
+              </div>
+
+              <!-- No public GitHub repo for this project -->
+              <div class="project-actions">
+                <span class="proj-no-repo-badge">
+                  <i class="fa-solid fa-lock"></i>
+                  <span>PRIVATE / LOCAL PROJECT</span>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 2: An Adaptive AI Framework -->
+          <article class="glass-card project-card reveal">
+            <div class="project-banner ai-banner">
+              <!-- Visual Graphic Background -->
+              <div class="project-overlay"></div>
+              <div class="banner-badge">
+                <i class="fa-solid fa-microchip"></i>
+                <span>INTELLIGENT SYSTEMS</span>
+              </div>
+              <div class="project-graphic">
+                <i class="fa-solid fa-network-wired graphic-icon"></i>
+                <div class="grid-radar"></div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-meta-bar">
+                <span class="proj-id">PROJECT_02</span>
+                <span class="proj-status"><span class="pulse-dot"></span> COMPLETED</span>
+              </div>
+
+              <h3 class="project-title">An Adaptive AI Framework for Intelligent Computer Hardware Selection</h3>
+
+              <div class="tech-tags">
+                <span class="tech-tag"><i class="devicon-python-plain colored"></i> Python</span>
+                <span class="tech-tag"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+                <span class="tech-tag"><i class="devicon-vscode-plain colored"></i> VS Code</span>
+              </div>
+
+              <p class="project-desc">
+                Developed an AI-based hardware recommendation system to suggest optimal PC configurations based on user requirements and budget. Implemented a recommendation engine with compatibility checks for processors, graphics cards, RAM, and storage. Built a user-friendly interface and integrated a hardware database to deliver accurate and optimized hardware recommendations.
+              </p>
+
+              <div class="project-highlights">
+                <div class="highlight-point">
+                  <i class="fa-solid fa-check text-crimson"></i>
+                  <span>Automated multi-constraint hardware compatibility and bottleneck verification</span>
+                </div>
+                <div class="highlight-point">
+                  <i class="fa-solid fa-check text-crimson"></i>
+                  <span>Relational hardware matrix with dynamic budget optimization heuristics</span>
+                </div>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/Anandh-2809/SmartPC-Antigravity" target="_blank" rel="noopener noreferrer" class="btn btn-outline cyber-btn-sm" aria-label="GitHub Repository for Hardware Recommendation AI">
+                  <i class="fa-brands fa-github"></i>
+                  <span>GITHUB REPO</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJECT 3: Natchathra Craft E-Commerce Website -->
+          <article class="glass-card project-card reveal">
+            <div class="project-banner web-banner">
+              <!-- Visual Graphic Background -->
+              <div class="project-overlay"></div>
+              <div class="banner-badge">
+                <i class="fa-solid fa-store"></i>
+                <span>WEB DEVELOPMENT</span>
+              </div>
+              <div class="project-graphic">
+                <i class="fa-solid fa-globe graphic-icon"></i>
+                <div class="grid-radar"></div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <div class="project-meta-bar">
+                <span class="proj-id">PROJECT_03</span>
+                <span class="proj-status"><span class="pulse-dot"></span> COMPLETED</span>
+              </div>
+
+              <h3 class="project-title">Natchathra Craft — E-Commerce Website</h3>
+
+              <div class="tech-tags">
+                <span class="tech-tag"><i class="devicon-html5-plain colored"></i> HTML5</span>
+                <span class="tech-tag"><i class="devicon-css3-plain colored"></i> CSS3</span>
+                <span class="tech-tag"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                <span class="tech-tag"><i class="fa-solid fa-store"></i> E-Commerce</span>
+              </div>
+
+              <p class="project-desc">
+                Designed and developed a website for a customized gifts and craft business. Built a fully responsive storefront showcasing handcrafted products, enabling customers to browse and connect with the brand online.
+              </p>
+
+              <div class="project-highlights">
+                <div class="highlight-point">
+                  <i class="fa-solid fa-check text-crimson"></i>
+                  <span>Responsive product showcase layout optimized for all screen sizes</span>
+                </div>
+                <div class="highlight-point">
+                  <i class="fa-solid fa-check text-crimson"></i>
+                  <span>Clean UI tailored for a customized gifts and crafts business brand</span>
+                </div>
+              </div>
+
+              <div class="project-actions">
+                <a href="https://github.com/Anandh-2809/Natchathra-craft-web" target="_blank" rel="noopener noreferrer" class="btn btn-outline cyber-btn-sm" aria-label="GitHub Repository for Natchathra Craft Website">
+                  <i class="fa-brands fa-github"></i>
+                  <span>GITHUB REPO</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section class="section achievements-section" id="achievements">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-subtitle">// PROVEN MILESTONES</span>
+          <h2 class="section-title">NOTABLE <span class="neon-red-text">ACHIEVEMENTS</span></h2>
+          <div class="section-divider"><span class="divider-node"></span></div>
+          <p class="section-lead">Quantifiable milestones reflecting competitive problem-solving dedication and academic distinction.</p>
+        </div>
+
+        <div class="achievements-grid">
+          <!-- Achievement 1: LeetCode -->
+          <div class="glass-card achievement-card reveal">
+            <div class="achievement-icon-wrap">
+              <i class="fa-solid fa-fire text-crimson"></i>
+            </div>
+            <div class="achievement-body">
+              <div class="stat-number-wrapper">
+                <span class="counter" data-target="150">0</span><span class="stat-plus">+</span>
+              </div>
+              <h3 class="achievement-title">LeetCode Problems Solved</h3>
+              <p class="achievement-desc">
+                Demonstrated algorithmic agility across data structures, arrays, strings, dynamic programming, and optimization challenges.
+              </p>
+              <div class="achievement-badge">
+                <a href="https://leetcode.com/u/Anandh_2809/" target="_blank" rel="noopener noreferrer" class="badge-link">
+                  <span>VERIFY ON LEETCODE</span> <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Achievement 2: NPTEL Top 2% -->
+          <div class="glass-card achievement-card reveal">
+            <div class="achievement-icon-wrap">
+              <i class="fa-solid fa-award text-crimson"></i>
+            </div>
+            <div class="achievement-body">
+              <div class="stat-number-wrapper">
+                <span class="stat-prefix">TOP </span><span class="counter" data-target="2">0</span><span class="stat-plus">%</span>
+              </div>
+              <h3 class="achievement-title">NPTEL Java Course Distinction</h3>
+              <p class="achievement-desc">
+                Ranked in the top 2nd percentile nationwide in the prestigious IIT/IISc sponsored NPTEL "Programming in Java" national examination.
+              </p>
+              <div class="achievement-badge">
+                <span class="badge-pill">NPTEL ELITE + GOLD</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Achievement 3: Academic Excellence -->
+          <div class="glass-card achievement-card reveal">
+            <div class="achievement-icon-wrap">
+              <i class="fa-solid fa-star text-crimson"></i>
+            </div>
+            <div class="achievement-body">
+              <div class="stat-number-wrapper">
+                <span class="counter-float" data-target="8.23">0.00</span><span class="stat-plus"> / 10</span>
+              </div>
+              <h3 class="achievement-title">B.E. Cumulative GPA</h3>
+              <p class="achievement-desc">
+                Consistent academic track record at Panimalar Engineering College through rigorous coursework and lab evaluations.
+              </p>
+              <div class="achievement-badge">
+                <span class="badge-pill">PANIMALAR ENGG. COLLEGE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS SECTION -->
+    <section class="section certifications-section" id="certifications">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-subtitle">// VERIFIED CREDENTIALS</span>
+          <h2 class="section-title">PROFESSIONAL <span class="neon-red-text">CERTIFICATIONS</span></h2>
+          <div class="section-divider"><span class="divider-node"></span></div>
+          <p class="section-lead">Industry-recognized certifications validating core programming, database querying, and game development fundamentals.</p>
+        </div>
+
+        <div class="certifications-grid">
+          <!-- Cert 1: Programming in Java -->
+          <div class="glass-card cert-card reveal">
+            <div class="cert-glow-strip"></div>
+            <div class="cert-header">
+              <div class="cert-icon-box">
+                <i class="devicon-java-plain colored"></i>
+              </div>
+              <span class="cert-id-tag">CERT_01</span>
+            </div>
+            <h3 class="cert-name">Programming in Java</h3>
+            <div class="cert-issuer">
+              <i class="fa-solid fa-building-columns text-crimson"></i>
+              <span>NPTEL (IIT Kharagpur / SWAYAM)</span>
+            </div>
+            <p class="cert-desc">
+              Advanced object-oriented programming concepts, multithreading, exception handling, collections framework, and JVM architecture with elite performance.
+            </p>
+            <div class="cert-footer">
+              <span class="cert-status-badge"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+            </div>
+          </div>
+
+          <!-- Cert 2: Introduction to SQL -->
+          <div class="glass-card cert-card reveal">
+            <div class="cert-glow-strip"></div>
+            <div class="cert-header">
+              <div class="cert-icon-box">
+                <i class="fa-solid fa-database text-crimson"></i>
+              </div>
+              <span class="cert-id-tag">CERT_02</span>
+            </div>
+            <h3 class="cert-name">Introduction to SQL</h3>
+            <div class="cert-issuer">
+              <i class="fa-solid fa-certificate text-crimson"></i>
+              <span>Simplilearn</span>
+            </div>
+            <p class="cert-desc">
+              Relational database design, complex joins, subqueries, schema constraints, aggregate functions, and high-performance data querying methods.
+            </p>
+            <div class="cert-footer">
+              <span class="cert-status-badge"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+            </div>
+          </div>
+
+          <!-- Cert 3: Unity 3D Development Course -->
+          <div class="glass-card cert-card reveal">
+            <div class="cert-glow-strip"></div>
+            <div class="cert-header">
+              <div class="cert-icon-box">
+                <i class="fa-solid fa-gamepad text-crimson"></i>
+              </div>
+              <span class="cert-id-tag">CERT_03</span>
+            </div>
+            <h3 class="cert-name">Unity 3D Development Course</h3>
+            <div class="cert-issuer">
+              <i class="fa-solid fa-dice-d20 text-crimson"></i>
+              <span>Wits Gaming, Cursa</span>
+            </div>
+            <p class="cert-desc">
+              Hands-on 3D game loop design, transform manipulation, rigid-body physics interactions, scene lighting, and cross-platform interactive workflows.
+            </p>
+            <div class="cert-footer">
+              <span class="cert-status-badge"><i class="fa-solid fa-circle-check"></i> Verified Credential</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION TIMELINE SECTION -->
+    <section class="section education-section" id="education">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-subtitle">// ACADEMIC HISTORY</span>
+          <h2 class="section-title">EDUCATION <span class="neon-red-text">TIMELINE</span></h2>
+          <div class="section-divider"><span class="divider-node"></span></div>
+          <p class="section-lead">A progressive roadmap of foundational and tertiary education in Computer Science.</p>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-line"></div>
+
+          <!-- Timeline Item 1: BE CSE -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">
+              <div class="dot-inner"></div>
+            </div>
+            <div class="glass-card timeline-card">
+              <div class="timeline-period-badge">
+                <i class="fa-solid fa-calendar-check"></i> 2022 – 2026
+              </div>
+              <h3 class="timeline-degree">Bachelor of Engineering in CSE</h3>
+              <h4 class="timeline-institution">Panimalar Engineering College, Chennai</h4>
+              <div class="timeline-grade-badge">
+                <span class="grade-label">CGPA:</span>
+                <span class="grade-value">8.23 / 10.0</span>
+              </div>
+              <p class="timeline-desc">
+                Comprehensive training across Computer Science disciplines including Data Structures &amp; Algorithms, Object-Oriented Software Design, Operating Systems, Database Management, and Full-Stack Engineering.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 2: Class 12 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">
+              <div class="dot-inner"></div>
+            </div>
+            <div class="glass-card timeline-card">
+              <div class="timeline-period-badge">
+                <i class="fa-solid fa-calendar-check"></i> 2021 – 2022
+              </div>
+              <h3 class="timeline-degree">Higher Secondary Certificate (Class 12)</h3>
+              <h4 class="timeline-institution">H.N.U.C. Higher Secondary School, Tenkasi</h4>
+              <div class="timeline-grade-badge">
+                <span class="grade-label">Score:</span>
+                <span class="grade-value">87.5%</span>
+              </div>
+              <p class="timeline-desc">
+                Completed higher secondary studies with a focus on Mathematics, Physics, Chemistry, and Computer Science fundamentals with outstanding academic standing.
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline Item 3: Class 10 -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot">
+              <div class="dot-inner"></div>
+            </div>
+            <div class="glass-card timeline-card">
+              <div class="timeline-period-badge">
+                <i class="fa-solid fa-calendar-check"></i> 2019 – 2020
+              </div>
+              <h3 class="timeline-degree">Secondary School Leaving Certificate (Class 10)</h3>
+              <h4 class="timeline-institution">H.N.U.C. Higher Secondary School, Tenkasi</h4>
+              <div class="timeline-grade-badge">
+                <span class="grade-label">Score:</span>
+                <span class="grade-value">84.2%</span>
+              </div>
+              <p class="timeline-desc">
+                Graduated secondary school establishing strong problem-solving roots in Mathematics and Science subjects.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section contact-section" id="contact">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-subtitle">// TRANSMIT TRANSMISSION</span>
+          <h2 class="section-title">GET IN <span class="neon-red-text">TOUCH</span></h2>
+          <div class="section-divider"><span class="divider-node"></span></div>
+          <p class="section-lead">Have a question or looking to collaborate? Drop me a message or connect through any of my direct channels.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Direct Information Cards -->
+          <div class="contact-info-column reveal">
+            <div class="glass-card contact-info-card">
+              <div class="card-header-cyber">
+                <i class="fa-solid fa-satellite-dish text-crimson"></i>
+                <span class="cyber-tag">DIRECT_CHANNELS</span>
+              </div>
+
+              <!-- Phone Item -->
+              <div class="contact-channel-item">
+                <div class="channel-icon">
+                  <i class="fa-solid fa-phone"></i>
+                </div>
+                <div class="channel-details">
+                  <span class="channel-label">PHONE NUMBER</span>
+                  <a href="tel:+918531061909" class="channel-value">+91 8531061909</a>
+                </div>
+                <button class="copy-btn" data-copy="+918531061909" aria-label="Copy phone number" title="Copy to clipboard">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+
+              <!-- Email Item -->
+              <div class="contact-channel-item">
+                <div class="channel-icon">
+                  <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="channel-details">
+                  <span class="channel-label">EMAIL ADDRESS</span>
+                  <a href="mailto:anandharaj28032005@gmail.com" class="channel-value">anandharaj28032005@gmail.com</a>
+                </div>
+                <button class="copy-btn" data-copy="anandharaj28032005@gmail.com" aria-label="Copy email address" title="Copy to clipboard">
+                  <i class="fa-regular fa-copy"></i>
+                </button>
+              </div>
+
+              <!-- Location Item -->
+              <div class="contact-channel-item">
+                <div class="channel-icon">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="channel-details">
+                  <span class="channel-label">LOCATION</span>
+                  <span class="channel-value static">Chennai &amp; Tenkasi, Tamil Nadu, India</span>
+                </div>
+              </div>
+
+              <!-- Social Links in Contact Card -->
+              <div class="contact-socials-wrapper">
+                <span class="socials-title">ONLINE PROFILES:</span>
+                <div class="contact-social-icons contact-social-icons--four">
+                  <a href="https://www.linkedin.com/in/anandh2803/" target="_blank" rel="noopener noreferrer" class="social-box" title="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                  </a>
+                  <a href="https://leetcode.com/u/Anandh_2809/" target="_blank" rel="noopener noreferrer" class="social-box" title="LeetCode">
+                    <i class="fa-solid fa-code"></i>
+                    <span>LeetCode</span>
+                  </a>
+                  <a href="https://github.com/Anandh-2809" target="_blank" rel="noopener noreferrer" class="social-box" title="GitHub">
+                    <i class="fa-brands fa-github"></i>
+                    <span>GitHub</span>
+                  </a>
+                  <a href="https://wa.me/918531061909" target="_blank" rel="noopener noreferrer" class="social-box social-box--whatsapp" title="WhatsApp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-column reveal">
+            <div class="glass-card contact-form-card">
+              <div class="card-header-cyber">
+                <i class="fa-solid fa-paper-plane text-crimson"></i>
+                <span class="cyber-tag">DISPATCH_MESSAGE</span>
+              </div>
+
+              <!-- 
+                NOTE: The contact form uses a mailto action pointing directly to anandharaj28032005@gmail.com.
+                The JavaScript submit handler ensures seamless formatting of the email subject and body
+                before triggering the user's default email client, allowing direct static deployment on GitHub Pages.
+              -->
+              <form id="contact-form" class="cyber-form">
+                <div class="form-group">
+                  <label for="contact-name" class="form-label">YOUR FULL NAME <span class="req">*</span></label>
+                  <div class="input-wrapper">
+                    <i class="fa-solid fa-user input-icon"></i>
+                    <input type="text" id="contact-name" name="name" class="form-input" placeholder="e.g. John Doe" required autocomplete="name">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">YOUR EMAIL ADDRESS <span class="req">*</span></label>
+                  <div class="input-wrapper">
+                    <i class="fa-solid fa-envelope input-icon"></i>
+                    <input type="email" id="contact-email" name="email" class="form-input" placeholder="e.g. johndoe@example.com" required autocomplete="email">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-subject" class="form-label">SUBJECT <span class="req">*</span></label>
+                  <div class="input-wrapper">
+                    <i class="fa-solid fa-tag input-icon"></i>
+                    <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="e.g. Software Developer Opportunity" required>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="contact-message" class="form-label">MESSAGE <span class="req">*</span></label>
+                  <div class="input-wrapper textarea-wrapper">
+                    <i class="fa-solid fa-comment-dots input-icon"></i>
+                    <textarea id="contact-message" name="message" class="form-input form-textarea" rows="5" placeholder="Write your message or inquiry here..." required></textarea>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary cyber-btn form-submit-btn" id="submit-btn">
+                  <span class="btn-text">TRANSMIT MESSAGE</span>
+                  <span class="btn-icon"><i class="fa-solid fa-paper-plane"></i></span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#home" class="footer-logo">
+            <span class="logo-bracket">[</span>
+            <span class="logo-text">ANANDHA<span class="text-crimson"> RAJ</span></span>
+            <span class="logo-bracket">]</span>
+          </a>
+          <p class="footer-tagline">Software Developer &amp; CSE Graduate | Crafting performant, resilient solutions.</p>
+        </div>
+
+        <div class="footer-nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#achievements">Achievements</a>
+          <a href="#certifications">Certifications</a>
+          <a href="#education">Education</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="footer-socials">
+          <a href="https://www.linkedin.com/in/anandh2803/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+          </a>
+          <a href="https://leetcode.com/u/Anandh_2809/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="LeetCode">
+            <i class="fa-solid fa-code"></i>
+          </a>
+          <a href="https://github.com/Anandh-2809" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="GitHub">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://wa.me/918531061909" target="_blank" rel="noopener noreferrer" class="footer-social-btn footer-social-btn--whatsapp" aria-label="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+          <a href="mailto:anandharaj28032005@gmail.com" class="footer-social-btn" aria-label="Email">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="copyright-text">&copy; 2026 Anandha Raj. All Rights Reserved.</p>
+        <p class="footer-built">Designed with Cinematic Cyber Aesthetics.</p>
+        <a href="#home" class="back-to-top" id="back-to-top" aria-label="Back to top">
+          <i class="fa-solid fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Element -->
+  <div class="toast-notification" id="toast-notification" role="alert" aria-live="polite">
+    <i class="fa-solid fa-circle-check toast-icon"></i>
+    <span class="toast-message" id="toast-message">Copied to clipboard!</span>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
