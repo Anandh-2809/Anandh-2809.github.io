@@ -435,10 +435,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const toastMessage = document.getElementById('toast-message');
   let toastTimeout;
 
-  const showToast = (message, duration = 3200) => {
+  const showToast = (message, duration = 3200, type = 'success') => {
     if (!toast || !toastMessage) return;
 
     toastMessage.textContent = message;
+    const toastIcon = toast.querySelector('.toast-icon');
+    if (toastIcon) {
+      const isError = type === 'error';
+      toastIcon.className = (isError ? 'fa-solid fa-circle-exclamation' : 'fa-solid fa-circle-check') + ' toast-icon' + (isError ? ' toast-icon-error' : '');
+    }
     toast.classList.add('show');
 
     clearTimeout(toastTimeout);
@@ -488,14 +493,31 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   /* ==========================================================================
-     10. CONTACT FORM — FORMSUBMIT AJAX HANDLER
-     ============================================================z===============
-     Uses FormSubmit.co (free, no backend needed, works on GitHub Pages).
-     HOW IT WORKS:
-       1. On first submission FormSubmit sends a one-time verification email
-          to anandharaj28032005@gmail.com. Click the link in that email once.
-       2. All future submissions are delivered directly to your Gmail inbox.
+     10. CONTACT FORM — EMAILJS (browser SDK v4)
+     ==========================================================================
+     Sends the form to anandharaj28032005@gmail.com through EmailJS.
+     Only the PUBLIC key is used here (it is safe in browser code).
+     Never put an EmailJS Private Key or any password in this file.
+     Success is shown ONLY when EmailJS answers with status 200.
+     Template variables: from_name, reply_to, subject, message
      ========================================================================== */
+  const EMAILJS_CONFIG = {
+    serviceId:  'service_8khck8e',
+    templateId: 'template_u5vluae',
+    publicKey:  '8yJQgWEEORVeEaGbw',   // Public Key (safe for browsers). Never put the Private Key here.
+    timeoutMs:  20000
+  };
+
+  // Loads the EmailJS SDK from a backup CDN if the primary <script> tag was blocked or failed.
+  const ensureEmailJS = () => new Promise((resolve) => {
+    if (typeof emailjs !== 'undefined') return resolve(true);
+    const backup = document.createElement('script');
+    backup.src = 'https://unpkg.com/@emailjs/browser@5/dist/email.min.js';
+    backup.onload  = () => resolve(typeof emailjs !== 'undefined');
+    backup.onerror = () => resolve(false);
+    document.head.appendChild(backup);
+  });
+
   const contactForm = document.getElementById('contact-form');
 
   if (contactForm) {
@@ -515,90 +537,118 @@ document.addEventListener('DOMContentLoaded', () => {
     successPanel.style.display = 'none';
     contactForm.parentNode.insertBefore(successPanel, contactForm.nextSibling);
 
-    // "Send another" resets and shows the form again
+    // "Send another" shows the (already reset) form again
     document.getElementById('form-back-btn').addEventListener('click', () => {
       successPanel.style.display = 'none';
       contactForm.style.display = 'flex';
-      contactForm.reset();
     });
+
+    const submitBtn = document.getElementById('submit-btn');
+    const setButton = (sending) => {
+      submitBtn.disabled = sending;
+      submitBtn.querySelector('.btn-text').textContent = sending ? 'TRANSMITTING…' : 'TRANSMIT MESSAGE';
+      submitBtn.querySelector('.btn-icon i').className =
+        sending ? 'fa-solid fa-circle-notch fa-spin' : 'fa-solid fa-paper-plane';
+    };
+
+    let isSending = false;
 
     contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (isSending) return;                       // block duplicate submissions
 
       const nameInput    = document.getElementById('contact-name');
       const emailInput   = document.getElementById('contact-email');
       const subjectInput = document.getElementById('contact-subject');
       const messageInput = document.getElementById('contact-message');
-      const submitBtn    = document.getElementById('submit-btn');
 
-      const name    = nameInput    ? nameInput.value.trim()    : '';
-      const email   = emailInput   ? emailInput.value.trim()   : '';
-      const subject = subjectInput ? subjectInput.value.trim() : 'Portfolio Inquiry';
-      const message = messageInput ? messageInput.value.trim() : '';
+      const name    = nameInput.value.trim();
+      const email   = emailInput.value.trim();
+      const subject = subjectInput.value.trim();
+      const message = messageInput.value.trim();
 
       // ── Validation ────────────────────────────────────────────────────────
       if (!name) {
-        showToast('Please enter your full name.'); nameInput.focus(); return;
+        showToast('Please enter your full name.', 3200, 'error'); nameInput.focus(); return;
       }
       if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        showToast('Please enter a valid email address.'); emailInput.focus(); return;
+        showToast('Please enter a valid email address.', 3200, 'error'); emailInput.focus(); return;
       }
       if (!subject) {
-        showToast('Please enter a subject.'); subjectInput.focus(); return;
+        showToast('Please enter a subject.', 3200, 'error'); subjectInput.focus(); return;
       }
       if (!message) {
-        showToast('Please write your message.'); messageInput.focus(); return;
+        showToast('Please write your message.', 3200, 'error'); messageInput.focus(); return;
       }
 
-      // ── Loading state (prevent double submit) ─────────────────────────────
-      submitBtn.disabled = true;
-      submitBtn.querySelector('.btn-text').textContent = 'TRANSMITTING…';
-      submitBtn.querySelector('.btn-icon i').className = 'fa-solid fa-circle-notch fa-spin';
+      // ── Configuration / SDK checks (never fake a success) ─────────────────
+      if (!EMAILJS_CONFIG.publicKey || EMAILJS_CONFIG.publicKey.indexOf('PASTE_') === 0) {
+        showToast('Contact form is not configured yet (EmailJS Public Key missing). Please email anandharaj28032005@gmail.com', 6000, 'error');
+        console.error('EmailJS: Public Key not set in script.js (EMAILJS_CONFIG.publicKey).');
+        return;
+      }
+      // ── Sending state ─────────────────────────────────────────────────────
+      isSending = true;
+      setButton(true);
+
+      if (!(await ensureEmailJS())) {
+        console.error('EmailJS SDK could not be loaded from jsDelivr or unpkg (network, firewall or ad blocker).');
+        showToast('Email service could not load (blocked network or ad blocker). Please email anandharaj28032005@gmail.com', 7000, 'error');
+        isSending = false; setButton(false);
+        return;
+      }
+      emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
 
       try {
-        /**
-         * FormSubmit AJAX endpoint — free, no backend, works on GitHub Pages.
-         * First submission triggers a one-time verification email to your Gmail.
-         * After you click the verification link once, all messages arrive in
-         * your inbox automatically.
-         */
-        const response = await fetch('https://formsubmit.co/ajax/anandharaj28032005@gmail.com', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            name:            name,
-            email:           email,
-            subject:         `[Portfolio] ${subject}`,
-            message:         message,
-            _subject:        `[Portfolio Contact] ${subject} — from ${name}`,
-            _captcha:        'false',   // disable captcha (enable in FormSubmit dashboard if spam)
-            _template:       'table'    // clean table format in received email
-          })
-        });
+        const params = { from_name: name, reply_to: email, subject: subject, message: message };
 
-        const data = await response.json();
+        const timeout = new Promise((_, reject) =>
+          setTimeout(() => reject({ timedOut: true }), EMAILJS_CONFIG.timeoutMs));
 
-        if (response.ok && data.success === 'true') {
-          // ── Success ──────────────────────────────────────────────────────
-          contactForm.style.display = 'none';
-          successPanel.style.display = 'flex';
-          showToast('Message sent! I will reply soon.', 4000);
-        } else {
-          throw new Error(data.message || 'Submission failed');
+        const res = await Promise.race([
+          emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, params,
+                       { publicKey: EMAILJS_CONFIG.publicKey }),
+          timeout
+        ]);
+
+        if (!res || res.status !== 200) {
+          throw { status: res && res.status, text: res && res.text };
         }
+
+        // ── Success: EmailJS confirmed acceptance ───────────────────────────
+        contactForm.reset();
+        contactForm.style.display = 'none';
+        successPanel.style.display = 'flex';
+        showToast('Message sent! I will reply soon.', 4000);
 
       } catch (err) {
         // ── Error ─────────────────────────────────────────────────────────
-        showToast('Could not send message. Please try emailing directly: anandharaj28032005@gmail.com', 5000);
-        console.error('FormSubmit error:', err);
-
-        // Restore button
-        submitBtn.disabled = false;
-        submitBtn.querySelector('.btn-text').textContent = 'TRANSMIT MESSAGE';
-        submitBtn.querySelector('.btn-icon i').className = 'fa-solid fa-paper-plane';
+        // EmailJS puts the real reason in err.text (e.g. "The Public Key is invalid").
+        console.error('EmailJS error → status:', err && err.status, '| text:', err && err.text, err);
+        const reason = (err && typeof err.text === 'string') ? err.text : '';
+        const low = reason.toLowerCase();
+        let msg;
+        if (err && err.timedOut) {
+          msg = 'The request timed out. Please try again, or email anandharaj28032005@gmail.com';
+        } else if (err && err.status === 429) {
+          msg = 'Too many requests. Please wait a moment and try again.';
+        } else if (err && typeof err.status === 'number') {
+          let hint = '';
+          if (low.includes('public key'))                   hint = ' (EmailJS Public Key is invalid)';
+          else if (low.includes('service') && low.includes('not found')) hint = ' (EmailJS Service ID not found)';
+          else if (low.includes('template') && low.includes('not found')) hint = ' (EmailJS Template ID not found)';
+          else if (low.includes('recipient'))               hint = ' (template "To Email" is empty)';
+          else if (low.includes('gmail') || low.includes('scope') || low.includes('grant')) hint = ' (Gmail service needs reconnecting)';
+          else if (low.includes('dynamic variables'))       hint = ' (template variable problem)';
+          else if (err.status === 403)                      hint = ' (domain not allowed in EmailJS security settings)';
+          msg = 'Message was not sent (' + err.status + ')' + hint + '. Please try again, or email anandharaj28032005@gmail.com';
+        } else {
+          msg = 'Network problem — message was not sent. Please try again, or email anandharaj28032005@gmail.com';
+        }
+        showToast(msg, 7000, 'error');
+      } finally {
+        isSending = false;
+        setButton(false);
       }
     });
   }
